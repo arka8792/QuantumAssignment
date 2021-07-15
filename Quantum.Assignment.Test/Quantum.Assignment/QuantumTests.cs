@@ -13,14 +13,6 @@ namespace Quantum.Assignment
     [TestFixture]
     public class QuantumTests : WebBaseTest
     {
-        
-
-        [Test]
-        public void Sample()
-        {
-            HomePage home = new HomePage();
-            home.SearchHomePage();            
-        }
 
         [Test]
         public void QTM_Assignment_ValidateMenu()
@@ -31,6 +23,41 @@ namespace Quantum.Assignment
                 HomePage home = new HomePage();
                 var isEqual = home.ValidateMenu(driver);
                 Assert.That(isEqual, Is.True, "Menu Items not displayed properly");
+
+            }
+            finally
+            {
+                Cleanup();
+            }
+        }
+
+        [Test]
+        public void QTM_Assignment_ValidateLinkText()
+        {
+            var driver = LaunchApplication();
+            try
+            {
+                HomePage home = new HomePage();
+                var isEqual = home.ValidateLinkText(driver);
+                Assert.That(isEqual, Is.True, "Link is not visible properly");
+
+            }
+            finally
+            {
+                Cleanup();
+            }
+        }
+
+        [Test]
+        public void QTM_Assignment_validateVaccinationLinkText()
+        {
+            var driver = LaunchApplication();
+            try
+            {
+                HomePage home = new HomePage();
+                var isEqual = home.validateVaccinationLink(driver);
+                Assert.That(isEqual, Is.True, "Link is not visible on the screen");
+
             }
             finally
             {

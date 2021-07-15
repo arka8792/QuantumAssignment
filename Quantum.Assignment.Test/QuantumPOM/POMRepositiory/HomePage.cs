@@ -12,9 +12,9 @@ namespace QuantumPOM.POMRepositiory
     public class HomePage
     {
         public HomeProps Property { get; set; }
-        IWebDriver driver;
 
-        private List<string> expectedList = new List<string> {
+        private List<string> expectedList = new List<string>
+        {
             "Vaccination Centres","COVID-19 Test Providers", "Nearby Parks",
             "Essential Amenities (2km)", "SchoolQuery", "PHPC near you",
             "LandQuery","DroneQuery","TrafficQuery", "PropertyQuery",
@@ -22,28 +22,16 @@ namespace QuantumPOM.POMRepositiory
             "Basemaps","Gallery"
         };
 
+        private string expectedLinkText = "https://www.moh.gov.sg/licensing-and-regulation/regulations-guidelines-and-circulars/details/list-of-covid-19-swab-providers";
+
+
+        private string expectedVaccinationLink = "https://www.vaccine.gov.sg/";
+
+
         public HomePage()
         {
             Property = new HomeProps();
         }
-        public void SearchHomePage()
-        {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("https://www.onemap.gov.sg/main/v2/");
-            driver.FindElement(Property.CloseButton).Click();
-            driver.FindElement(Property.SearchBox).SendKeys("ABCD");
-            driver.FindElement(Property.Link).Click();
-            driver.FindElement(Property.Menu).Click();
-            Thread.Sleep(2000);
-            driver.FindElement(Property.Menu).Click();
-            driver.FindElement(Property.Center).Click();
-            driver.FindElement(Property.Amenities).Click();
-            Thread.Sleep(5000);
-            driver.Quit();
-
-        }
-
 
         public bool ValidateMenu(IWebDriver driver)
         {
@@ -64,5 +52,35 @@ namespace QuantumPOM.POMRepositiory
 
             return isEqual;
         }
+        public  bool ValidateLinkText(IWebDriver driver)
+        {
+            driver.FindElement(Property.CloseButton).Click();
+            driver.FindElement(Property.Link).Click();
+
+            Thread.Sleep(1000);
+            var CovidMessageLink = driver.FindElement(Property.CovidMessageLinkBy);
+            var CovidMessageLinkText = CovidMessageLink.Text.Trim();
+
+            var isEqual = CovidMessageLinkText.Equals(expectedLinkText);
+
+            return isEqual;
+        }
+       
+        public bool validateVaccinationLink(IWebDriver driver)
+        {
+            driver.FindElement(Property.CloseButton).Click();
+            driver.FindElement(Property.Center).Click();
+
+            Thread.Sleep(2000);
+
+            var VaccinationCenterLinks = driver.FindElement(Property.VaccinationCenterLinkBy);
+            var VaccinationCenterLinkText = VaccinationCenterLinks.GetAttribute("href");
+
+            var isEqual = VaccinationCenterLinkText.Equals(expectedVaccinationLink);
+
+            return isEqual;
+        }
+
+       
     }
 }

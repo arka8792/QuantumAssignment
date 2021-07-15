@@ -30,5 +30,11 @@ namespace QuantumPOM.POMRepositiory
 
         public static string MenuItems = "//span[@class='topView_text']";
         public By MenuItemsBy = By.XPath(MenuItems);
+
+        public static string CovidMessageLink = "//div[@class='DroneCheckBox']//a";
+        public By CovidMessageLinkBy = By.XPath(CovidMessageLink);
+
+        public static string VaccinationCenterLink = "//a[contains(text(),'www.vaccine.gov.sg')]";
+        public By VaccinationCenterLinkBy = By.XPath(VaccinationCenterLink);
     }
 }

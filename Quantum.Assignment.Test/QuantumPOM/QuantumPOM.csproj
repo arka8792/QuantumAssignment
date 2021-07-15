@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="POMRepositiory\HomePage.cs" />
     <Compile Include="POMRepositiory\HomeProps.cs" />
+    <Compile Include="POMRepositiory\message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
