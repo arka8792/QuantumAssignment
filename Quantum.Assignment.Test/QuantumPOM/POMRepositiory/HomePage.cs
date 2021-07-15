@@ -14,6 +14,14 @@ namespace QuantumPOM.POMRepositiory
         public HomeProps Property { get; set; }
         IWebDriver driver;
 
+        private List<string> expectedList = new List<string> {
+            "Vaccination Centres","COVID-19 Test Providers", "Nearby Parks",
+            "Essential Amenities (2km)", "SchoolQuery", "PHPC near you",
+            "LandQuery","DroneQuery","TrafficQuery", "PropertyQuery",
+            "PopulationQuery","Nearby","BizQuery","Bus Explorer",
+            "Basemaps","Gallery"
+        };
+
         public HomePage()
         {
             Property = new HomeProps();
@@ -37,11 +45,8 @@ namespace QuantumPOM.POMRepositiory
         }
 
 
-        public List<string> ValidateMenu()
+        public bool ValidateMenu(IWebDriver driver)
         {
-            driver = new ChromeDriver();
-            driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("https://www.onemap.gov.sg/main/v2/");
             driver.FindElement(Property.CloseButton).Click();
             driver.FindElement(Property.Menu).Click();
 
@@ -55,7 +60,9 @@ namespace QuantumPOM.POMRepositiory
 
             menuItemTexts = menuItemTexts.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
 
-            return menuItemTexts;
+            var isEqual = menuItemTexts.SequenceEqual(expectedList);
+
+            return isEqual;
         }
     }
 }

@@ -11,15 +11,9 @@ using QuantumPOM.POMRepositiory;
 namespace Quantum.Assignment
 {
     [TestFixture]
-    public class QuantumTests
+    public class QuantumTests : WebBaseTest
     {
-        private List<string> expectedList = new List<string> {        
-            "Vaccination Centres","COVID-19 Test Providers", "Nearby Parks",
-            "Essential Amenities (2km)", "SchoolQuery", "PHPC near you",
-            "LandQuery","DroneQuery","TrafficQuery", "PropertyQuery",
-            "PopulationQuery","Nearby","BizQuery","Bus Explorer",
-            "Basemaps","Gallery"
-        };
+        
 
         [Test]
         public void Sample()
@@ -31,9 +25,17 @@ namespace Quantum.Assignment
         [Test]
         public void QTM_Assignment_ValidateMenu()
         {
-            HomePage home = new HomePage();
-            var actualList = home.ValidateMenu();
-            CollectionAssert.AreEqual(expectedList, actualList);
+            var driver = LaunchApplication();
+            try
+            {
+                HomePage home = new HomePage();
+                var isEqual = home.ValidateMenu(driver);
+                Assert.That(isEqual, Is.True, "Menu Items not displayed properly");
+            }
+            finally
+            {
+                Cleanup();
+            }
         }
     }
 }
