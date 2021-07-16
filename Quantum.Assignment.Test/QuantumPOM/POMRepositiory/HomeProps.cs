@@ -36,5 +36,11 @@ namespace QuantumPOM.POMRepositiory
 
         public static string VaccinationCenterLink = "//a[contains(text(),'www.vaccine.gov.sg')]";
         public By VaccinationCenterLinkBy = By.XPath(VaccinationCenterLink);
+
+        public static string SearchText = "search-text";
+        public By SearchTextBy = By.XPath(SearchText);
+
+        public static string CardTitle = "//div[@id='start_marker']//p[@class='block wrap']";
+        public By CardTitleBy = By.XPath(CardTitle);
     }
 }

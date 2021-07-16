@@ -26,7 +26,7 @@ namespace QuantumPOM.POMRepositiory
 
 
         private string expectedVaccinationLink = "https://www.vaccine.gov.sg/";
-
+        private string expectedCardTitle = "ABC WATERS @ KALLANG RIVER";
 
         public HomePage()
         {
@@ -52,7 +52,7 @@ namespace QuantumPOM.POMRepositiory
 
             return isEqual;
         }
-        public  bool ValidateLinkText(IWebDriver driver)
+        public bool ValidateLinkText(IWebDriver driver)
         {
             driver.FindElement(Property.CloseButton).Click();
             driver.FindElement(Property.Link).Click();
@@ -65,7 +65,7 @@ namespace QuantumPOM.POMRepositiory
 
             return isEqual;
         }
-       
+
         public bool validateVaccinationLink(IWebDriver driver)
         {
             driver.FindElement(Property.CloseButton).Click();
@@ -81,6 +81,20 @@ namespace QuantumPOM.POMRepositiory
             return isEqual;
         }
 
-       
+        public bool ValidateSearchText(IWebDriver driver)
+        {
+            driver.FindElement(Property.CloseButton).Click();
+            driver.FindElement(Property.SearchBox).SendKeys("ABC WATERS @ KALLANG RIVER");
+            driver.FindElement(Property.SearchBox).SendKeys(Keys.Enter);
+
+            Thread.Sleep(3000);
+            var CardTitle = driver.FindElement(Property.CardTitleBy);
+            var CardTitleText = CardTitle.Text.Trim();
+
+            var isEqual = CardTitleText.Equals(expectedCardTitle);
+
+            return isEqual;
+        }
+
     }
 }

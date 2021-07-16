@@ -64,5 +64,22 @@ namespace Quantum.Assignment
                 Cleanup();
             }
         }
+
+        [Test]
+        public void QTM_Assignment_CardTitleText()
+        {
+            var driver = LaunchApplication();
+            try
+            {
+                HomePage home = new HomePage();
+                var isEqual = home.ValidateSearchText(driver);
+                Assert.That(isEqual, Is.True, "Pointer is not visible with details");
+
+            }
+            finally
+            {
+                Cleanup();
+            }
+        }
     }
 }
