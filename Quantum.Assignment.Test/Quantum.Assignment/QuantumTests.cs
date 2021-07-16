@@ -65,12 +65,23 @@ namespace Quantum.Assignment
         [Test]
         public void QTM_Assignment_ValidateLinkText()
         {
-            var driver = LaunchApplication();
+
+            IWebDriver driver = null;
+            ExtentTest report = null;
+
             try
             {
+                report = extentReports.CreateTest("QTM_Assignment_ValidateLinkText").Info("Starting Link Validation Test");
+                driver = LaunchApplication();
+                report.Log(Status.Info, "Application launched");
+
                 HomePage home = new HomePage();
                 var isEqual = home.ValidateLinkText(driver);
+
+                report.Log(Status.Info, "LinkText is Validated");
+
                 Assert.That(isEqual, Is.True, "Link is not visible properly");
+                report.Log(Status.Pass, "QTM_Assignment_ValidateLinkText Passed");
 
             }
             finally
@@ -82,12 +93,24 @@ namespace Quantum.Assignment
         [Test]
         public void QTM_Assignment_validateVaccinationLinkText()
         {
-            var driver = LaunchApplication();
+
+            IWebDriver driver = null;
+            ExtentTest report = null;
+            
             try
             {
+                report = extentReports.CreateTest("QTM_Assignment_validateVaccinationLinkText").Info("Starting VaccinationLink Validation Test");
+                driver = LaunchApplication();
+                report.Log(Status.Info, "Application launched");
+
                 HomePage home = new HomePage();
                 var isEqual = home.validateVaccinationLink(driver);
+
+                report.Log(Status.Info, "VaccinationLink is Validated");
+
+
                 Assert.That(isEqual, Is.True, "Link is not visible on the screen");
+                report.Log(Status.Pass, "QTM_Assignment_VaccinationLink Passed");
 
             }
             finally
@@ -99,12 +122,22 @@ namespace Quantum.Assignment
         [Test]
         public void QTM_Assignment_CardTitleText()
         {
-            var driver = LaunchApplication();
+            IWebDriver driver = null;
+            ExtentTest report = null;
+            
             try
             {
+                report = extentReports.CreateTest("QTM_Assignment_ValidateCardTitleText").Info("Starting CardTitleText Validation Test");
+                driver = LaunchApplication();
+                report.Log(Status.Info, "Application launched");
+
                 HomePage home = new HomePage();
                 var isEqual = home.ValidateSearchText(driver);
+
+                report.Log(Status.Info, "CardTitleText is Validated");
+
                 Assert.That(isEqual, Is.True, "Pointer is not visible with details");
+                report.Log(Status.Pass, "QTM_Assignment_CardTitleText Passed");
 
             }
             finally
@@ -116,12 +149,22 @@ namespace Quantum.Assignment
         [Test]
         public void QTM_Assignment_EssentialAmenities()
         {
-            var driver = LaunchApplication();
+            IWebDriver driver = null;
+            ExtentTest report = null;
+            
             try
             {
+                report = extentReports.CreateTest("QTM_Assignment_ValidateEssentialAmenities").Info("Starting EssentialAmenities Validation Test");
+                driver = LaunchApplication();
+                report.Log(Status.Info, "Application launched");
+
                 HomePage home = new HomePage();
                 var isEqual = home.validateAmenities(driver);
+
+                report.Log(Status.Info, "EssentialAmenities is Validated");
+
                 Assert.That(isEqual, Is.True, "List is not visible");
+                report.Log(Status.Pass, "QTM_Assignment_EssentialAmenities Passed");
 
             }
             finally
