@@ -26,7 +26,16 @@ namespace QuantumPOM.POMRepositiory
 
 
         private string expectedVaccinationLink = "https://www.vaccine.gov.sg/";
+
+
         private string expectedCardTitle = "ABC WATERS @ KALLANG RIVER";
+
+        private List<string> expecteddataList = new List<string>
+        {
+            "Hawker Centres and NEA Markets","Supermarkets","PHPCs","Retail Pharmacy Locations",
+            "Bank Branches","ATMs","DBS ATMs","OCBC ATMs","Convenience Stores","Post Offices",
+            "Social Service Offices","Food Establishments","Hair Cuts","Optical Shops","Telcos"
+        };
 
         public HomePage()
         {
@@ -96,5 +105,30 @@ namespace QuantumPOM.POMRepositiory
             return isEqual;
         }
 
+        public bool validateAmenities(IWebDriver driver)
+        {
+            driver.FindElement(Property.CloseButton).Click();
+            driver.FindElement(Property.Amenities).Click();
+            Thread.Sleep(1000);
+
+            driver.FindElement(Property.ConfirmationCardBy).Click();
+
+            Thread.Sleep(2000);
+
+            var IndividualTab = driver.FindElements(Property.IndividualTabBy);
+            var IndividualTabList = new List<string>();
+
+            foreach (var item in IndividualTab)
+            {
+                IndividualTabList.Add(item.Text);
+            }
+
+            IndividualTabList = IndividualTabList.Where(s => !string.IsNullOrWhiteSpace(s)).Distinct().ToList();
+
+            var isEqual = IndividualTabList.Intersect(expecteddataList).Count() == IndividualTabList.Count();
+
+            return isEqual;
+        }
+            
     }
 }

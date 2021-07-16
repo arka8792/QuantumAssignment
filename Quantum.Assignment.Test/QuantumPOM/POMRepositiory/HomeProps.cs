@@ -42,5 +42,15 @@ namespace QuantumPOM.POMRepositiory
 
         public static string CardTitle = "//div[@id='start_marker']//p[@class='block wrap']";
         public By CardTitleBy = By.XPath(CardTitle);
+
+        public static string EssentialAmenitiesTab = "EssDisplay";
+        public By EssentialAmenitiesTabBy = By.Id(EssentialAmenitiesTab);
+
+        public static string ConfirmationCard = "//div[@class='swal2-buttonswrapper']//button";
+        public By ConfirmationCardBy = By.XPath(ConfirmationCard);
+
+        public static string IndividualTab = "//div[@class='DroneThemeNames ng-binding']";
+        public By IndividualTabBy = By.XPath(IndividualTab);
+
     }
 }

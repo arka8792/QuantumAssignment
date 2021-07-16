@@ -48,6 +48,12 @@
     <Reference Include="DnsClient, Version=1.2.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
       <HintPath>..\packages\DnsClient.1.2.0\lib\net471\DnsClient.dll</HintPath>
     </Reference>
+    <Reference Include="ExtentReports, Version=3.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExtentReports.3.1.2\lib\ExtentReports.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.5, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9.5\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.dll</HintPath>
     </Reference>
@@ -241,11 +247,11 @@
     <Reference Include="nunit.framework, Version=3.13.2.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.13.2\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="RazorEngine, Version=3.9.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>..\packages\RazorEngine.3.9.0\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="RazorEngine.NetCore, Version=0.0.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <HintPath>..\packages\RazorEngine.NetCore.2.2.6\lib\net461\RazorEngine.NetCore.dll</HintPath>
-    </Reference>
-    <Reference Include="RelevantCodes.ExtentReports, Version=1.4.9.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ExtentReports.2.41.0\lib\RelevantCodes.ExtentReports.dll</HintPath>
     </Reference>
     <Reference Include="SharpCompress, Version=0.23.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpCompress.0.23.0\lib\net45\SharpCompress.dll</HintPath>
@@ -417,6 +423,9 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -450,6 +459,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="license" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -457,13 +467,16 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Reports\" />
+    <Content Include="extent-config.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\QuantumPOM\QuantumPOM.csproj">
       <Project>{d41b25b3-4400-4248-ac57-ca2a8a593887}</Project>
       <Name>QuantumPOM</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
