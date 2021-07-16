@@ -461,6 +461,7 @@
     <None Include="app.config" />
     <None Include="license" />
     <None Include="packages.config" />
+    <None Include="Shared.Runsettings" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
