@@ -20,7 +20,7 @@ namespace Quantum.Assignment
         {
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl("https://www.onemap.gov.sg/main/v2/");
+            driver.Navigate().GoToUrl(TestContext.Parameters.Get("AppUrl"));
             return driver;
         }
 
